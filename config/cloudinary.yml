@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dzgpmfcbr
+  api_key: '138226316418274'
+  api_secret: 98IOhvQyFCJyNF1ttS4OFIs-J58
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dzgpmfcbr
+  api_key: '138226316418274'
+  api_secret: 98IOhvQyFCJyNF1ttS4OFIs-J58
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dzgpmfcbr
+  api_key: '138226316418274'
+  api_secret: 98IOhvQyFCJyNF1ttS4OFIs-J58
+  enhance_image_tag: true
+  static_image_support: false

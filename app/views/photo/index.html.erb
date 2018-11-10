@@ -1,0 +1,51 @@
+<h1 style="text-align: center">Minimalistic insta feed by demash</h1>
+<div class="wrapper">
+    <form class="uploads" method="POST" action="/photo/store" enctype="multipart/form-data">
+        <%= token_tag %> 
+        <div class="form-group">
+            <label for="caption">Insert caption</label>
+            <input type="text" name="caption">
+        </div>
+        <div style="margin-left: 5px;">
+            <input type="file" name="image">
+        </div>
+        <div>
+            <input type="submit" value="Upload">
+        </div>
+    </form>
+    <div class="images" id="photo_section">
+      <% @photos.each do |photo| %>
+          <div class="photo">
+            <div>
+                <img class="photo-image" src="<%= photo.link %>">
+            </div>
+            <p class="photo-caption"><%= photo.caption %></p>
+          </div>
+      <% end %>
+    </div>
+    <div class="images">
+        <div class="photo">
+            <div>
+                <img class="photo-image" src="http://everystockphoto.s3.amazonaws.com/space_shuttle_artworks_376611_o.jpg">
+            </div>
+            <p class="photo-caption">My first message</p>
+        </div>
+    </div>
+</div>
+<script>
+  var channel = pusher.subscribe('photos-channel');
+  channel.bind('new-photo', function(data) {
+      let photo_link = data.link;
+      let photo_caption = data.caption;
+      let div = document.getElementById('photos_section');
+      let new_content = document.createElement("div");
+      new_content.innerHTML = `
+          <div class="photo">
+              <div>
+                  <img class="photo-image" src="${photo_link}">
+              </div>
+              <p class="photo-caption"> ${photo_caption}</p>
+          </div>`;
+      div.insertBefore(new_content, div.firstChild);
+  });
+</script>  
