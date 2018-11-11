@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a single-page web application designed for sharing photos
 
-Things you may want to cover:
+### TO-DO
+- [x] Upload
+- [ ] Delete
+- [ ] View for photos
+- [ ] Comments
+- [ ] **Fix pusher problem (ASAP)**
 
-* Ruby version
+To run locally you need: 
+* `clone this repo`
+* `bundle install`
+* `rails db:migrate`
+* `rails server`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Runs on ruby 2.5.3
