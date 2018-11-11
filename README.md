@@ -1,6 +1,7 @@
 # README
 
-This is a single-page web application designed for sharing photos
+This is a single-page web application designed for sharing photos.
+Runs on ruby 2.5.3.
 
 ### TO-DO
 - [x] Upload
@@ -16,4 +17,4 @@ To run locally you need:
 * `rails db:migrate`
 * `rails server`
 
-* Runs on ruby 2.5.3
+
