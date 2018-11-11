@@ -5,7 +5,7 @@ Runs on ruby 2.5.3.
 
 ### TO-DO
 - [x] Upload
-- [х] Move to postgres from sqlite
+- [x] Move to postgres from sqlite
 - [ ] Delete
 - [ ] View for photos
 - [ ] Comments
