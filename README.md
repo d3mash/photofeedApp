@@ -14,7 +14,8 @@ Runs on ruby 2.5.3.
 To run locally you need: 
 * `clone this repo`
 * `bundle install`
-* `rails db:migrate`
+* `rake db:create`
+* `rake db:migrate`
 * `rails server`
 
 
