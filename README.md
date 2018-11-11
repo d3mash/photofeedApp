@@ -4,6 +4,7 @@ This is a single-page web application designed for sharing photos
 
 ### TO-DO
 - [x] Upload
+- [ ] Move to postgres from sqlite
 - [ ] Delete
 - [ ] View for photos
 - [ ] Comments
