@@ -21,12 +21,14 @@
 }
 .photo-caption{
   padding-left: 20px;
+  display:inline-block;
+  width: 70%;
 }
 .uploads{
   display: flex;
   justify-content: space-between;
 }
-input[type="submit"]{
+.uploads input[type="submit"]{
   background-color: #333333;
   border: none;
   color: white;
@@ -35,4 +37,12 @@ input[type="submit"]{
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+.deletes{
+  display: inline-block;
+  align: right;
+  width: 20%;
+}
+.deletes input[type="submit"]{
+  width:100%;
 }

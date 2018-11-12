@@ -14,14 +14,17 @@
         </div>
     </form>
     <div class="images" id="photo_section">
-      <% @photos.each do |photo| %>
-          <div class="photo">
-            <div>
-                <img class="photo-image" src="<%= photo.link %>">
+        <% @photos.each do |photo| %>
+            <div class="photo">
+                <div>
+                    <img class="photo-image" src="<%= photo.link %>">
+                </div>
+                <p class="photo-caption"><%= photo.caption %></p>
+                <form class="deletes" method="POST" action ="/photo/delete" enctype="multipart/form-data">
+                  <input type="submit" value="Delete">
+                </form>
             </div>
-            <p class="photo-caption"><%= photo.caption %></p>
-          </div>
-      <% end %>
+        <% end %>
     </div>
     <div class="images">
         <div class="photo">
@@ -29,6 +32,9 @@
                 <img class="photo-image" src="http://everystockphoto.s3.amazonaws.com/space_shuttle_artworks_376611_o.jpg">
             </div>
             <p class="photo-caption">My first message</p>
+            <form class="deletes">
+              <input type="submit" value="Undeleteable">
+            </form>
         </div>
     </div>
 </div>
@@ -42,7 +48,9 @@
       new_content.innerHTML = `
           <div class="photo">
               <div>
+              <a href="">
                   <img class="photo-image" src="${photo_link}">
+              </a>
               </div>
               <p class="photo-caption"> ${photo_caption}</p>
           </div>`;
