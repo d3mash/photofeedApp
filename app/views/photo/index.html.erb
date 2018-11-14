@@ -20,7 +20,9 @@
                     <img class="photo-image" src="<%= photo.link %>">
                 </div>
                 <p class="photo-caption"><%= photo.caption %></p>
-                <form class="deletes" method="POST" action ="/photo/delete" enctype="multipart/form-data">
+                <form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
+                  <%= token_tag %> 
+                  <input type="hidden" name="id" value="<%= photo.id %>">
                   <input type="submit" value="Delete">
                 </form>
             </div>

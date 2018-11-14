@@ -7,7 +7,9 @@ class PhotoController < ApplicationController
     redirect_to('/')
   end
   def delete
-    
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    redirect_to('/')
   end
   def index
     @photos = Photo.all.order("created_at DESC")
