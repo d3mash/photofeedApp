@@ -38,22 +38,3 @@
         </div>
     </div>
 </div>
-<!-- <script>
-  var channel = pusher.subscribe('photos-channel');
-  channel.bind('new-photo', function(data) {
-      let photo_link = data.link;
-      let photo_caption = data.caption;
-      let div = document.getElementById('photos_section');
-      let new_content = document.createElement("div");
-      new_content.innerHTML = `
-          <div class="photo">
-              <div>
-              <a href="">
-                  <img class="photo-image" src="${photo_link}">
-              </a>
-              </div>
-              <p class="photo-caption"> ${photo_caption}</p>
-          </div>`;
-      div.insertBefore(new_content, div.firstChild);
-  });
-</script>   -->

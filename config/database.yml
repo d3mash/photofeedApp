@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: ENV['DATABASE_URL']
+  database: pu_db_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
