@@ -9,7 +9,6 @@ gem 'rails', '~> 5.2.1'
 gem 'pg'
 # cloudinary as a photo storage
 gem 'cloudinary'
-gem 'pusher'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

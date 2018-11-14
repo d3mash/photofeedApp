@@ -9,7 +9,6 @@ Runs on ruby 2.5.3.
 - [ ] Delete
 - [ ] View for photos
 - [ ] Comments
-- [x] **Fix pusher problem (ASAP)**
 
 To run locally you need: 
 * `clone this repo`
