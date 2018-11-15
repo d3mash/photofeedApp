@@ -23,6 +23,7 @@
                 <form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
                   <%= token_tag %> 
                   <input type="hidden" name="id" value="<%= photo.id %>">
+                  <imput type="hidden" name="link" value="<%= photo.link%>">
                   <input type="submit" value="Delete">
                 </form>
             </div>
