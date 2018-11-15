@@ -9,6 +9,7 @@ class PhotoController < ApplicationController
   def delete
     @photo = Photo.find(params[:id])
     @photo.destroy
+    # todo - delete from cloud
     redirect_to('/')
   end
   def index
