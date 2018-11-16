@@ -1,3 +1,11 @@
+a:hover{
+  color: blue;
+  text-decoration: underline;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
 .wrapper{
   display: flex;
   flex-direction: column;

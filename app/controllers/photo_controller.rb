@@ -6,6 +6,9 @@ class PhotoController < ApplicationController
     @photo.save
     redirect_to('/')
   end
+  def view(id)
+    @photo = Photo.find(id)
+  end
   def delete
     @photo = Photo.find(params[:id])
     @value = Cloudinary::Uploader.destroy(@photo['public_id'])
