@@ -16,4 +16,9 @@ test:
 
 production:
   <<: *default
-  database: pu_db_prod
+  encoding: utf8
+  database: ENV['PROD_DB']
+  username: ENV['DB_USER']
+  password: ENV['DB_PASS']
+  host: ENV['DB_HOST']
+  port: ENV['DB_PORT']
