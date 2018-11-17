@@ -7,7 +7,7 @@ Runs on ruby 2.5.3.
 - [x] Upload
 - [x] Move to postgres from sqlite
 - [x] Delete
-- [ ] View for photos
+- [x] View for photos
 - [ ] Comments
 
 To run locally you need: 
