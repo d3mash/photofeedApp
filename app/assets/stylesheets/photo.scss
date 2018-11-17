@@ -1,4 +1,6 @@
-p {
+* {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}p {
   padding: 0;
 }
 a:hover{
@@ -62,6 +64,12 @@ a{
   justify-content: center;
 }
 .deletes input[type="submit"]{
+  border: 1px solid #FF4C4C;
+  font-size: 14px;
+  color: white;
+  background-color: #FF4C4C; 
+  border-radius: 10px;
+  heigth: 25px;
   width: 50%;
   display: flex;
   justify-content: center;
