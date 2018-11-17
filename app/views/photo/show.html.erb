@@ -1,0 +1,17 @@
+<p hidden><%= root_path(@photo) %></p>
+<div class="wrapper">
+	<%= token_tag %>
+    <div style="width: 700px" class="photo-view">
+    	<h1 style="text-align: center"><%= @photo.caption %></h1>
+		<div>
+	        <img class="photo-image" src="<%= @photo.link %>">	
+		</div>
+		<form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
+		  <%= token_tag %> 
+		  <input type="hidden" name="id" value="<%= @photo.id %>">
+		  <input type="hidden" name="link" value="<%= @photo.link%>">
+		  <input type="submit" value="Delete">
+		</form>
+	</div>
+	<a href='/'><h2 style="text-align: center">Back to feed</h2></a>
+</div>

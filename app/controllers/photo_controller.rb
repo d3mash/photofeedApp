@@ -1,13 +1,17 @@
 class PhotoController < ApplicationController
   def store
     # upload image to cloudinary
-    @value = Cloudinary::Uploader.upload(params[:image])
-    @photo = Photo.new({:link => @value['secure_url'], :public_id => @value['public_id'], :caption => params[:caption]})
-    @photo.save
-    redirect_to('/')
+    if (params[:image]==nil)
+      redirect_to('/')
+    else
+      @value = Cloudinary::Uploader.upload(params[:image])
+      @photo = Photo.new({:link => @value['secure_url'], :public_id => @value['public_id'], :caption => params[:caption]})
+      @photo.save
+      redirect_to('/') 
+    end
   end
-  def view(id)
-    @photo = Photo.find(id)
+  def show
+    @photo = Photo.find(params[:id])
   end
   def delete
     @photo = Photo.find(params[:id])

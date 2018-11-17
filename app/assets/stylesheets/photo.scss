@@ -1,3 +1,6 @@
+p {
+  padding: 0;
+}
 a:hover{
   color: blue;
   text-decoration: underline;
@@ -24,13 +27,19 @@ a{
       margin-bottom: 20px;
   }
 }
+.photo-view {
+  width: 500px;
+  border-radius: 10px;
+  border: 1px solid rgb(214, 210, 210);
+  margin-bottom: 20px;
+  padding: 20px;
+}
 .photo-image{
   width: 100%;
 }
 .photo-caption{
-  padding-left: 20px;
-  display:inline-block;
-  width: 70%;
+  display: flex;
+  justify-content: center;
 }
 .uploads{
   display: flex;
@@ -47,10 +56,13 @@ a{
   font-size: 16px;
 }
 .deletes{
-  display: inline-block;
-  align: right;
-  width: 20%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 .deletes input[type="submit"]{
-  width:100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
