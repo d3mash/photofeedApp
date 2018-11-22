@@ -8,7 +8,7 @@ Runs on ruby 2.5.3.
 - [x] Move to postgres from sqlite
 - [x] Delete
 - [x] View for photos
-- [ ] Comments
+- [ ] Authorization
 
 To run locally you need: 
 * `clone this repo`
