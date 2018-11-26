@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <p class="photo-caption"><%= photo.caption %></p>
-                <form style="padding-bottom: 10px" class="deletes" method="DELETE" action="/photo/delete" enctype="multipart/form-data">
+                <form style="padding-bottom: 10px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
                   <%= token_tag %> 
                   <input type="hidden" name="id" value="<%= photo.id %>">
                   <input type="hidden" name="link" value="<%= photo.link%>">

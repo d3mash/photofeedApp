@@ -3,7 +3,6 @@ class PhotoController < ApplicationController
     if (params[:image]==nil)
       redirect_to('/')
     else
-
       @value = Cloudinary::Uploader.upload(params[:image])
       @photo = Photo.new({:link => @value['secure_url'], :public_id => @value['public_id'], :caption => params[:caption]})
       @photo.save
