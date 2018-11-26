@@ -1,0 +1,13 @@
+<% provide(:title, "Log in") %>
+<body>
+  <h1 style="text-align: center">Log in</h1>
+  <form class="auth" method="POST" action="/login" enctype="multipart/form-data">
+    <%= token_tag %>
+    <label for="session[email]">E-mail</label>
+    <input type="email" name="session[email]">
+    <label for="session[password]">Password</label>
+    <input type="password" name="session[password]">
+    <input type="submit" value="login">
+  </form>
+  <p>New user? <%= link_to "Sign up now!", '/users/new' %></p>
+</body>

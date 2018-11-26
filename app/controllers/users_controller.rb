@@ -6,9 +6,11 @@ class UsersController < ApplicationController
   	@user = User.new({:name => params[:name], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation]}) 
   	if (@user.valid?)
   		@user.save
-      flash[:success] = "Welcome to the photofeedApp!"
+      log_in @user
+      flash.now[:success] = "Welcome to the photofeedApp!"
       redirect_to @user
   	else
+      flash.now[:danger] = "Please verify validity of your information"
   		render('new')
   	end 
   end

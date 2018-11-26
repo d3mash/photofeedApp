@@ -1,5 +1,5 @@
 <body><h1 style="text-align: center">Sign up</h1>
-	<form class="register" method="POST" action="/users" enctype="multipart/form-data">
+	<form class="auth" method="POST" action="/users" enctype="multipart/form-data">
 		<%= token_tag %> 
 		<label for="name">Your name</label>
 		<input type="text" name="name">
@@ -12,6 +12,3 @@
 		<input type="submit" value="signup">
 	</form>
 </body>
-<footer class="debug">
-	<%= debug(params) if Rails.env.development? %>
-</footer>
