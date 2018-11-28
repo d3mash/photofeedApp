@@ -1,5 +1,6 @@
 <h1 style="text-align: center">Minimalistic insta feed by demash</h1>
 <div class="wrapper">
+    <% if logged_in? %>
     <form class="uploads" method="POST" action="/photo/store" enctype="multipart/form-data">
         <%= token_tag %> 
         <div style="margin-left: 5px;">
@@ -13,21 +14,35 @@
             <input type="submit" value="Upload">
         </div>
     </form>
+    <% else %>
+    <h1 style="text-align: center">
+        You must be logged in to post
+    </h1>
+    <% end %>
     <div class="images" id="photo_section">
         <% @photos.each do |photo| %>
+        <% user = User.find(photo.user_id)%>
             <div class="photo">
-                <div>
+                <div class="pheader">
+                    <%= gravatar_for user %>
+                    <h2><%= user.name %> posted this</h2>
+                    <h3>at <%= photo.created_at.strftime("%Y/%m/%d %H:%M ")%></h3>
+                </div>
                     <a href="/photo/<%= photo.id %>">
                         <img class="photo-image" src="<%= photo.link %>">
                     </a>
-                </div>
                 <p class="photo-caption"><%= photo.caption %></p>
-                <form style="padding-bottom: 10px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-                  <%= token_tag %> 
-                  <input type="hidden" name="id" value="<%= photo.id %>">
-                  <input type="hidden" name="link" value="<%= photo.link%>">
-                  <input type="submit" value="Delete">
+                <% if logged_in? && current_user.id.equal?(photo.user_id) %>
+                <form style="padding-bottom: 5px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
+                    <% token_tag %> 
+
+                    <input type="hidden" name="id" value="<%= photo.id %>">
+                    <input type="hidden" name="link" value="<%= photo.link%>">
+                    <input type="submit" value="Delete">
                 </form>
+                <% else %>
+                    <hr>
+                <% end %>
             </div>
         <% end %>
     </div>

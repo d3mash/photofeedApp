@@ -1,16 +1,24 @@
 <div class="wrapper">
-	<%= token_tag %>
     <div style="width: 700px" class="photo-view">
-    	<h1 style="text-align: center"><%= @photo.caption %></h1>
+    	<div class="pheader">
+    		<%= gravatar_for @user %>
+    		<h2><%= @user.name %> posted this</h2>
+    		<h3>at <%= @photo.created_at.strftime("%Y/%m/%d %H:%M") %></h3>
+    	</div>
 		<div>
 	        <img class="photo-image" src="<%= @photo.link %>">	
 		</div>
+		<% if logged_in? && current_user.id.equal?(@user.id) %>
 		<form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-		  <%= token_tag %> 
+		  <% token_tag %> 
+
 		  <input type="hidden" name="id" value="<%= @photo.id %>">
 		  <input type="hidden" name="link" value="<%= @photo.link%>">
 		  <input type="submit" value="Delete">
 		</form>
+		<% else %>
+		<p style="font-size: 20px; text-align: center"> Thanks for viewing!</p>
+		<% end %>
 	</div>
 	<a href='/'><h2 style="text-align: center">Back to feed</h2></a>
 </div>

@@ -27,6 +27,7 @@ a{
       border-radius: 10px;
       border: 1px solid rgb(214, 210, 210);
       margin-bottom: 20px;
+      padding: 10px;
   }
 }
 .photo-view {
@@ -42,6 +43,7 @@ a{
 .photo-caption{
   display: flex;
   justify-content: center;
+  font-size: 22px;
 }
 .uploads{
   display: flex;
