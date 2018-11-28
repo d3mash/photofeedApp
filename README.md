@@ -9,7 +9,7 @@ Runs on ruby 2.5.3.
 - [x] Delete
 - [x] View for photos
 - [x] Authorization
-- [ ] Bind user and post
+- [x] Bind user and post
 
 To run locally you need: 
 * `clone this repo`
