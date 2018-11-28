@@ -34,7 +34,7 @@
                 <p class="photo-caption"><%= photo.caption %></p>
                 <% if logged_in? && current_user.id.equal?(photo.user_id) %>
                 <form style="padding-bottom: 5px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-                    <% token_tag %> 
+                    <%= token_tag %> 
 
                     <input type="hidden" name="id" value="<%= photo.id %>">
                     <input type="hidden" name="link" value="<%= photo.link%>">

@@ -10,8 +10,7 @@
 		</div>
 		<% if logged_in? && current_user.id.equal?(@user.id) %>
 		<form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-		  <% token_tag %> 
-
+		  <%= token_tag %> 
 		  <input type="hidden" name="id" value="<%= @photo.id %>">
 		  <input type="hidden" name="link" value="<%= @photo.link%>">
 		  <input type="submit" value="Delete">
