@@ -8,6 +8,7 @@
     <label for="session[password]">Password</label>
     <input type="password" name="session[password]">
     <input type="submit" value="login">
+    <label class="remember"><input type="checkbox" name="session[remember_me]" value="1"> Remember me on this computer</label>
   </form>
   <p style ="text-align: center">New user? <%= link_to "Sign up now!", '/users/new' %></p>
 </body>

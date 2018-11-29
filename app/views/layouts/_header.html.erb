@@ -9,6 +9,7 @@
           <li><%= link_to "Profile", current_user %></li>
           <li><%= link_to "Settings", '#' %></li>
           <li>
+            <%= token_tag %>
             <%= link_to "Log out", logout_path, method: :delete %>
           </li>
           </li>
