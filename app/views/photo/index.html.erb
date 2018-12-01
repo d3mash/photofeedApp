@@ -1,49 +1,52 @@
-<h1 style="text-align: center">Minimalistic insta feed by demash</h1>
-<div class="wrapper">
-    <% if logged_in? %>
-    <form class="uploads" method="POST" action="/photo/store" enctype="multipart/form-data">
-        <%= token_tag %> 
-        <div style="margin-left: 5px;">
-            <input type="file" name="image">
-        </div>
-        <div class="form-group">
-            <label for="caption">Insert caption</label>
-            <input type="text" name="caption">
-        </div>
+<div class="container">
+    <div class="col-md-10 col-md-offset-1">
+        <h1 class="page-header" style="text-align: center">
+            Minimalistic insta feed by demash
+            <% if !logged_in? %>
+            <br>
+            You must be logged in to post
+            <br>
+            <a style="margin-top: 10px" href="/sessions/new" class="btn btn-lg btn-primary">Log in now!</a>
+        
+        <% else %>
+            <form class="upload form-group" method="POST" action="/photo/store" enctype="multipart/form-data">
+                <%= token_tag %> 
+                <input type="file" name="image">
+                <label for="caption">Insert caption</label>
+                <input type="text" name="caption" placeholder="Your caption...">
+                <input class="btn-success" type="submit" value="Upload">
+            </form>
+        <% end %>
+        </h1>
         <div>
-            <input type="submit" value="Upload">
-        </div>
-    </form>
-    <% else %>
-    <h1 style="text-align: center">
-        You must be logged in to post
-    </h1>
-    <% end %>
-    <div class="images" id="photo_section">
-        <% @photos.each do |photo| %>
-        <% user = User.find(photo.user_id)%>
-            <div class="photo">
-                <div class="pheader">
-                    <%= gravatar_for user %>
-                    <h2><%= user.name %> posted this</h2>
-                    <h3>at <%= photo.created_at.strftime("%Y/%m/%d %H:%M")%></h3>
-                </div>
+            <% @photos.each do |photo| %>
+            <% user = User.find(photo.user_id)%>
+                <div class="photo">
+                    <div class="media postheader">
+                        <div class="media-left media-middle">
+                            <%= gravatar_for(user)%>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading"><%= user.name %> posted this</h3>
+                            <h3 class="media-heading">at <%= photo.created_at.strftime("%Y/%m/%d %H:%M") %></h3>
+                        </div>
+                    </div>
                     <a href="/photo/<%= photo.id %>">
                         <img class="photo-image" src="<%= photo.link %>">
-                    </a>
-                <p class="photo-caption"><%= photo.caption %></p>
-                <% if logged_in? && current_user.id.equal?(photo.user_id) %>
-                <form style="padding-bottom: 5px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-                    <%= token_tag %> 
-
-                    <input type="hidden" name="id" value="<%= photo.id %>">
-                    <input type="hidden" name="link" value="<%= photo.link%>">
-                    <input type="submit" value="Delete">
-                </form>
-                <% else %>
+                        </a>
+                    <p class="photo-caption"><%= photo.caption %></p>
+                    <% if logged_in? && current_user.id.equal?(photo.user_id) %>
+                    <form style="padding-bottom: 5px" class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
+                        <%= token_tag %> 
+                        <input type="hidden" name="id" value="<%= photo.id %>">
+                        <input type="hidden" name="link" value="<%= photo.link%>">
+                        <input class="btn-danger" type="submit" value="Delete">
+                    </form>
+                    <% else %>
                     <hr>
-                <% end %>
-            </div>
-        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>

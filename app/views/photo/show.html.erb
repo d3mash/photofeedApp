@@ -1,24 +1,30 @@
-<div class="wrapper">
-    <div style="width: 700px" class="photo-view">
-    	<div class="pheader">
-    		<%= gravatar_for @user %>
-    		<h2><%= @user.name %> posted this</h2>
-    		<h3>at <%= @photo.created_at.strftime("%Y/%m/%d %H:%M") %></h3>
-    	</div>
-		<div>
-	        <img class="photo-image" src="<%= @photo.link %>">	
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="media postheader">
+			<div class="media-left media-middle">
+				<%= gravatar_for(@user)%>
+			</div>
+			<div class="media-body">
+	    		<h3 class="media-heading"><%= @user.name %> posted this</h3>
+	    		<h3 class="media-heading">at <%= @photo.created_at.strftime("%Y/%m/%d %H:%M") %></h3>
+			</div>
 		</div>
-		<% if logged_in? && current_user.id.equal?(@user.id) %>
-		<form class="deletes" method="POST" action="/photo/delete" enctype="multipart/form-data">
-		  <%= token_tag %> 
-		  <input type="hidden" name="id" value="<%= @photo.id %>">
-		  <input type="hidden" name="link" value="<%= @photo.link%>">
-		  <input type="submit" value="Delete">
-		</form>
-		<% else %>
-		<p style="font-size: 22px; text-align: center">Caption: <%= @photo.caption%></p>
-		<p style="font-size: 20px; text-align: center"> Thanks for viewing!</p>
-		<% end %>
+		<div class="photo">	
+		    <img class="photo-image" src="<%= @photo.link %>">	
+		    <p style="font-size: 22px; text-align: center">Caption: <%= @photo.caption%></p>
+			<% if logged_in? && current_user.id.equal?(@user.id) %>
+			<form method="POST" action="/photo/delete" enctype="multipart/form-data">
+			  <%= token_tag %> 
+			  <input type="hidden" name="id" value="<%= @photo.id %>">
+			  <input type="hidden" name="link" value="<%= @photo.link%>">
+			  <input class="btn-danger" type="submit" value="Delete">
+			</form>
+			<% else %>
+			<p style="font-size: 22px; text-align: center; margin-top:10px"> Thanks for viewing!</p>
+			<% end %>
+			<a href='/'>
+				<h2 style="text-align: center">Back to feed</h2>
+			</a>
+		</div>
 	</div>
-	<a href='/'><h2 style="text-align: center">Back to feed</h2></a>
 </div>
