@@ -12,11 +12,22 @@ class UsersController < ApplicationController
   	else
       flash.now[:danger] = "Please verify validity of your information"
   		render('new')
-  	end 
+  	end
+  end
+  def edit
+    @user = User.find(params[:id])
+  end
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(users_params)
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
   private
     def users_params
-      params.require(:users).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end 
   end
