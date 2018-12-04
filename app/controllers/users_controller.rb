@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
   def create
-  	@user = User.new({:name => params[:name], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation]}) 
+  	@user = User.new(users_params) 
   	if (@user.valid?)
   		@user.save
       log_in @user
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(users_params)
+      flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'
