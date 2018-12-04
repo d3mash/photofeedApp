@@ -5,6 +5,7 @@ one:
   caption: 'caption text'
   link: 'sample-link.com'
   public_id: 1255
+  user_id: 1
 
 two:
   id: 2
