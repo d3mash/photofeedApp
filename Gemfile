@@ -20,6 +20,8 @@ gem 'gravatar'
 gem 'rails-controller-testing'
 gem 'rest-client'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'rubocop', '~> 0.58', require: false
+gem 'rubocop-rspec', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
