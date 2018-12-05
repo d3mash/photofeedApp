@@ -1,0 +1,6 @@
+inherit_from: .rubocop.yml
+
+# NOTE: CodeClimate has older version of rubocop-rspec but our code satisfies newer version, so we
+# need to turn off this old rule to prevent false positives on the good new code
+FactoryBot/StaticAttributeDefinedDynamically:
+  Enabled: false
