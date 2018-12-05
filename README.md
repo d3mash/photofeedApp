@@ -10,7 +10,7 @@ Runs on ruby 2.5.3.
 - [x] View for photos
 - [x] Authorization
 - [x] Bind user and post
-- [ ] Implement changing user settings
+- [x] Implement changing user settings
 
 To run locally you need: 
 * `clone this repo`
