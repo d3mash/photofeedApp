@@ -3,12 +3,13 @@
 class PhotoController < ApplicationController
   include PhotoServices
   def store
-    if params[:image].nil?
-      redirect_to('/')
+    home = redirect_to('/')
+    if !params[:image]
+      home
     else
       upload(params)
     end
-    redirect_to('/')
+    home
   end
 
   def show
@@ -18,7 +19,7 @@ class PhotoController < ApplicationController
 
   def delete
     @photo = Photo.find(params[:id])
-    @value = Cloudinary::Uploader.destroy(@photo['public_id'])
+    del(@photo)
     @photo.destroy
     redirect_to('/')
   end

@@ -7,4 +7,5 @@ services:
   - postgresql
 script:
   - bundle exec rubocop
+  - bundle exec reek
   - bin/rails test

@@ -3,13 +3,9 @@
 class SessionsController < ApplicationController
   include SessionsServices
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      create_session(user)
-    else
-      flash.now[:danger] = 'Invalid credentials, try again'
-      render 'new'
-    end
+    sessionparams = params[:session]
+    user = User.find_by(email: sessionparams[:email].downcase)
+    try_login(user, sessionparams)
   end
 
   def destroy

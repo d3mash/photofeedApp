@@ -429,7 +429,8 @@ Style/RedundantConditional:
 
 Style/NestedParenthesizedCalls:
   Enabled: false
-
+Style/TrivialAccessors:
+  Enabled: false
 Style/IfInsideElse:
   Enabled: false
 

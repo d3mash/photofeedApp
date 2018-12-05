@@ -7,4 +7,8 @@ module PhotoServices
                          caption: params[:caption], user_id: current_user.id)
     @photo.save
   end
+
+  def del(photo)
+    @value = Cloudinary::Uploader.destroy(photo['public_id'])
+  end
 end

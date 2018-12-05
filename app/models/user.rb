@@ -1,8 +1,18 @@
 # frozen_string_literal: true
 
-valid_email_regex = /.+\@.+\..+/
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  def initialize(remember_token)
+    @remember_token = remember_token
+  end
+
+  def remember_token
+    @remember_token
+  end
+
+  def remember_token=(val)
+    @remember_token = val
+  end
+
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true,
@@ -11,6 +21,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
+
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                 BCrypt::Engine.cost
@@ -27,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token)
-    return false if remember_digest.nil?
+    return false unless remember_digest
 
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end

@@ -9,18 +9,17 @@ detectors:
   DuplicateMethodCall:
     allow_calls:
       - 'Rails.env'
+    max_calls: 2
 
   UncommunicativeModuleName:
     accept:
       - 'V5'
-
 directories:
   'app/helpers':
     UtilityFunction:
       enabled: false
     FeatureEnvy:
       enabled: false
-
   'app/workers':
     UtilityFunction:
       enabled: false
@@ -31,3 +30,5 @@ directories:
   'app/mailers':
     InstanceVariableAssumption:
       enabled: false
+exclude_paths:
+  - db

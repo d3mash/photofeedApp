@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :index, :update]
+  before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  def index; end
+  include UsersServices
 
   def show
     @user = User.find(params[:id])
@@ -12,10 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.valid?
-      @user.save
-      log_in @user
-      flash.now[:success] = 'Welcome to the photofeedApp!'
-      redirect_to @user
+      save_user(@user)
     else
       flash.now[:danger] = 'Please verify validity of your information'
       render('new')
