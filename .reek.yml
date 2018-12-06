@@ -31,4 +31,5 @@ directories:
     InstanceVariableAssumption:
       enabled: false
 exclude_paths:
-  - db
+  - 'db'
+  - 'vendor'
