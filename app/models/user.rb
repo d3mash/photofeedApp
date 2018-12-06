@@ -1,18 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  def initialize(remember_token)
-    @remember_token = remember_token
-  end
-
-  def remember_token
-    @remember_token
-  end
-
-  def remember_token=(val)
-    @remember_token = val
-  end
-
+  # :reek:Attribute { enabled: false }
+  attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true,
