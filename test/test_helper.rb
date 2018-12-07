@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start do
   add_filter '/test/'
 end
-ENV['RAILS_ENV'] ||= 'test'
+
 require_relative '../config/environment'
 require 'rails/test_help'
 

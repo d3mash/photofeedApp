@@ -13,7 +13,10 @@ Runs on ruby 2.5.3.
 - [x] View for photos
 - [x] Authorization
 - [x] Bind user and post
-- [x] Implement changing user settings
+- [ ] Paging  
+- [ ] Display all users on users#index
+- [ ] Display all user's posts on user page
+- [ ] Implement changing user settings
 
 To run locally you need: 
 * `clone this repo`
