@@ -617,6 +617,7 @@ Metrics/BlockLength:
     - config/routes.rb
     - config/routes/**/*.rb
     - spec/**/*.rb
+    - config/environments/**.rb
 
 Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting'

@@ -22,8 +22,13 @@ directories:
       enabled: false
   'app/workers':
     UtilityFunction:
-      enabled: false
 
+      enabled: false
+  'app/services':
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
   'app/controllers':
     InstanceVariableAssumption:
       enabled: false
@@ -32,6 +37,8 @@ directories:
       enabled: false
   'test':
     InstanceVariableAssumption:
+      enabled: false
+    UtilityFunction:
       enabled: false
 exclude_paths:
   - 'db'
