@@ -16,8 +16,8 @@ module SessionsServices
   def succesful_login(user, session_params)
     flash.now[:success] = "Welcome, #{user.name}!"
     log_in user
-    redirect_to user
     session_params[:remember_me] == '1' ? remember(user) : forget(user)
+    redirect_back_or user
   end
 
   def unsuccessful_login

@@ -45,4 +45,13 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               email: @user.email } }
     assert_redirected_to '/login'
   end
+
+  test 'friendly forwarding' do
+    get edit_user_path(@user)
+    assert_equal session[:forwarding_url], 'http://www.example.com/users/1/edit'
+    log_in_as(@user)
+    assert_redirected_to edit_user_url(@user)
+    log_in_as(@user)
+    assert_redirected_to @user
+  end
 end
