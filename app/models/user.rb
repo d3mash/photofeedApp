@@ -48,13 +48,12 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  private
-  def downcase_email
-    !email.downcase
-  end
-
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+  private
+  def downcase_email
+    !email.downcase
   end
 end
