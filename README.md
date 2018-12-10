@@ -14,9 +14,9 @@ Runs on ruby 2.5.3.
 - [x] Authorization
 - [x] Bind user and post
 - [x] Implement changing user settings
-- [ ] Add icon for webpage
-- [ ] Paging  
-- [ ] Display all users on users#index
+- [x] Add icon for webpage
+- [x] Paging 
+- [x] Display all users on users#index
 - [ ] Display all user's posts on user page
 
 To run locally you need: 
