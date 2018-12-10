@@ -17,6 +17,8 @@ Runs on ruby 2.5.3.
 - [x] Add icon for webpage
 - [x] Paging 
 - [x] Display all users on users#index
+- [ ] Account activation via email link
+- [ ] Password reset via email
 - [ ] Display all user's posts on user page
 
 To run locally you need: 
