@@ -8,6 +8,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:archer)
   end
 
+  test 'should redirect to login from index' do
+    get users_path
+    assert_redirected_to login_url
+  end
+
+  test 'should display correct users in index' do
+    # STUB TO-DO
+  end
+
   test 'should redirect edit when not logged in' do
     get edit_user_path(@user)
     assert_not flash.empty?
@@ -58,7 +67,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h1', @user.name
   end
 
-  test 'authenticated? should return false for a user with nil digest' do
-    assert_not @user.authenticated?('')
+  test 'should redirect destroy when not logged in' do
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to login_url
   end
 end
