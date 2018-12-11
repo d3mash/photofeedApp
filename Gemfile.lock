@@ -203,6 +203,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.18.0)
+      multi_json
     rubocop (0.60.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -302,6 +304,7 @@ DEPENDENCIES
   rails-controller-testing
   reek
   rest-client
+  rollbar
   rubocop (~> 0.58)
   rubocop-rspec
   sass-rails (~> 5.0)
