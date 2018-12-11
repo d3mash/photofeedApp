@@ -10,6 +10,7 @@ Runs on ruby 2.5.3.
 - [x] Paging 
 - [x] Display all users on users#index
 - [x] Account activation via email link
+- [ ] Refactor user digest attributes
 - [ ] Password reset via email
 - [ ] Display all user's posts on user page
 
