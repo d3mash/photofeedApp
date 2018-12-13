@@ -18,9 +18,7 @@ class PhotoController < ApplicationController
   end
 
   def delete
-    @photo = Photo.find(params[:id])
-    del(@photo)
-    @photo.destroy
+    del(Photo.find(params[:id]))
     redirect_to('/')
   end
 
