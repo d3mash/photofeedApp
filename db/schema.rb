@@ -38,6 +38,4 @@ ActiveRecord::Schema.define(version: 2018_12_10_121422) do
     t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-
-  add_foreign_key "photos", "users"
 end
