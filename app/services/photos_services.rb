@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhotoServices
+module PhotosServices
   def upload(params)
     # upload to cloudinary
     @value = Cloudinary::Uploader.upload(params[:image])

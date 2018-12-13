@@ -1,6 +1,6 @@
 <li class="photo">
     <div class="media postheader">
-        <% user = User.find(photo.user.id) %>
+        <% user = User.find(photo.user_id) %>
         <div class="media-left media-middle">
             <%= gravatar_for(user)%>
         </div>

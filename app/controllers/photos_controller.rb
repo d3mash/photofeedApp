@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
-class PhotoController < ApplicationController
-  include PhotoServices
-  def store
+class PhotosController < ApplicationController
+  include PhotosServices
+  def index
+    @photos = Photo.paginate(page: params[:page])
+  end
+
+  def create
     home = redirect_to('/')
     if !params[:image]
       home
@@ -17,12 +21,8 @@ class PhotoController < ApplicationController
     @user = User.find(@photo.user_id)
   end
 
-  def delete
+  def destroy
     del(Photo.find(params[:id]))
     redirect_to('/')
-  end
-
-  def index
-    @photos = Photo.all.order('created_at DESC')
   end
 end

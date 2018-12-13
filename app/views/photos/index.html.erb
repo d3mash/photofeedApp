@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="col-md-10 col-md-offset-1">
+        <h1 class="page-header" style="text-align: center">
+            Minimalistic insta feed by demash
+        </h1>
+            <% if !logged_in? %>
+            <br>
+            You must be logged in to post
+            <br>
+            <a style="margin-top: 10px" href="/login" class="btn btn-lg btn-primary">Log in now!</a>
+            <% else %>
+            <form class="upload form-group" method="POST" action="/photos" enctype="multipart/form-data">
+                <%= token_tag %> 
+                <input type="file" name="image">
+                <label for="caption">Insert caption</label>
+                <input type="text" name="caption" placeholder="Your caption...">
+                <input class="btn-success" type="submit" value="Upload">
+            </form>
+            <%= will_paginate %>
+            <ul class ="photos">
+                <% render @photos %>
+            </ul>
+            <%= will_paginate %>
+    </div>
+</div>
+<% end %>
