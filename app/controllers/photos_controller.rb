@@ -25,4 +25,9 @@ class PhotosController < ApplicationController
     del(Photo.find(params[:id]))
     redirect_to('/')
   end
+
+  private
+  def photos_params
+    params.require(:photo).permit(:link, :caption, :public_id, :user_id)
+  end
 end
