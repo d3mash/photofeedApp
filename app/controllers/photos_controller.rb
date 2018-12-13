@@ -3,7 +3,7 @@
 class PhotosController < ApplicationController
   include PhotosServices
   def index
-    @photos = Photo.paginate(page: params[:page])
+    @photos = Photo.reorder('created_at DESC').paginate(page: params[:page])
   end
 
   def create

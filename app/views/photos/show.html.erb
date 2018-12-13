@@ -12,13 +12,11 @@
 		<div class="photo">	
 		    <img style="max-width: 95%"class="photo-image" src="<%= @photo.link %>">	
 		    <p style="font-size: 22px; text-align: center">Caption: <%= @photo.caption%></p>
-			<% if logged_in? && current_user.id.equal?(@user.id) %>
-			<form method="POST" action="/photo/delete" enctype="multipart/form-data">
-			  <%= token_tag %> 
-			  <input type="hidden" name="id" value="<%= @photo.id %>">
-			  <input type="hidden" name="link" value="<%= @photo.link%>">
-			  <input class="btn-danger" type="submit" value="Delete">
-			</form>
+				<% if logged_in? && current_user.id.equal?(@user.id) %>
+				<p class="photo-caption">
+            <%= link_to "delete", @photo, method: :delete,
+              data: { confirm: "Delete this photo? You sure?" } %>
+          </p>
 			<% else %>
 			<p style="font-size: 22px; text-align: center; margin-top:10px"> Thanks for viewing!</p>
 			<% end %>
