@@ -4,7 +4,7 @@ module SessionsServices
   def try_login(user, session)
     if user
       if user.authenticate(session[:password])
-        succesful_login(user, session)
+        user.activated ? succesful_login(user, session) : not_activated
       else
         unsuccessful_login
       end
@@ -23,5 +23,12 @@ module SessionsServices
   def unsuccessful_login
     flash.now[:danger] = 'Invalid credentials, try again'
     render 'new'
+  end
+
+  def not_activated
+    message = 'Account not activated. '
+    message += 'Check your email for the activation link.'
+    flash[:warning] = message
+    redirect_to root_url
   end
 end

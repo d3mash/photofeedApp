@@ -8,7 +8,7 @@ class PhotoTest < ActiveSupport::TestCase
     assert_not photo.save, 'Saved empty photo'
   end
   test 'should write to database' do
-    photo = Photo.new(link: 'link', public_id: '3414', caption: 'i am in db')
+    photo = Photo.new(link: 'link', public_id: '3414', caption: 'i am in db', user_id: '1')
     photo.save
     assert Photo.exists?(caption: 'i am in db'), 'does not write to db'
   end
