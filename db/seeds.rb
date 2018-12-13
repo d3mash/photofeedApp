@@ -19,3 +19,11 @@ User.create!(name:  'Example User',
                activated: true,
                activated_at: Time.zone.now)
 end
+60.times do |n|
+  Photo.create!(link: 'https://res.cloudinary.com/dzgpmfcbr/image/upload/v1544700147/nf3d8vhzbdgw5tdzqbov.jpg',
+                caption: 'Hello',
+                created_at: Time.zone.now,
+                updated_at: Time.zone.now,
+                user_id: '1',
+                public_id: 'nf3d8vhzbdgw5tdzqbov')
+end
