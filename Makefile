@@ -1,7 +1,7 @@
 precommit:
 	reek
 	rubocop
-	rails test
+	rake
 install:
 	bundle install
 	rake db:create

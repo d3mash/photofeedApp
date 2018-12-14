@@ -17,5 +17,6 @@ Runs on ruby 2.5.3.
 To run locally you need: 
 * `clone this repo`
 * `bundle install`
+* Configure `config/local_env.yml` to match [.cloudinary_env_example.yml]([.cloudinary_env_example.yml]) with [Cloudinary](https://cloudinary.com/) keys
 * `rake db:migrate`
 * `rails server`
