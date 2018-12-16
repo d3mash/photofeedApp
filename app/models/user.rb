@@ -5,7 +5,6 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
   before_create :create_activation_digest
-
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true,
             length: { maximum: 255 },
@@ -14,9 +13,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
   has_many :photos, dependent: :destroy
+
   def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                BCrypt::Engine.cost
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 

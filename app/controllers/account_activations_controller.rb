@@ -3,10 +3,8 @@
 class AccountActivationsController < ApplicationController
   include ActivationServices
   def edit
-    user = User.find_by(email: params[:email])
-    if valid?(user, params)
-      user.update(activated: true, activated_at: Time.zone.now)
-      activate(user)
+    if try_activate(params)
+      flash[:success] = 'Account activated'
     else
       flash[:danger] = 'Invalid activation link'
       redirect_to root_url
