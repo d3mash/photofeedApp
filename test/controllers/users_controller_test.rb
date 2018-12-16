@@ -13,10 +13,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test 'should display correct users in index' do
-    # STUB TO-DO
-  end
-
   test 'should redirect edit when not logged in' do
     get edit_user_path(@user)
     assert_not flash.empty?
@@ -33,12 +29,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test 'should not be valid' do
     invalid_email = User.new(name: 'Demash', email: 'idon"t haveatsign')
     assert_not invalid_email.valid?, 'invalid email accepted'
-  end
-
-  test 'should be valid' do
-    test_user = User.new(name: 'Example User', email: 'user@example.com',
-                         password: 'foobar12', password_confirmation: 'foobar12')
-    assert test_user.valid?, 'valid user entry invalidated'
   end
 
   test 'password should be present (nonblank)' do

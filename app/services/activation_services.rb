@@ -1,14 +1,21 @@
 # frozen_string_literal: true
 
 module ActivationServices
-  def activate(user)
-      user.activate
-      log_in user
-      flash[:success] = 'Account activated'
-      redirect_to user
+  def try_activate(params)
+    user = User.find_by(email: params[:email].downcase)
+    return false unless user
+
+    can_activate?(user) ? activate(user) : false
   end
 
-  def valid?(user, params)
-    user && !user.activated && user.authenticated?(:activation, params[:id])
+  private
+  def activate(user)
+    user.activate
+    log_in user
+    redirect_to user
+  end
+
+  def can_activate?(user)
+    !user.activated && user.authenticated?(:activation, params[:id])
   end
 end
