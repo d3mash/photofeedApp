@@ -20,13 +20,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.valid?
-      UsersServices.save_user(@user)
-      flash[:info] = 'Please check your email to activate your account.'
+      type, message = UsersServices.save_user(@user)
       redirect_to root_url
     else
-      flash.now[:danger] = 'Please verify validity of your information'
       render('new')
     end
+    flash[type] = message
   end
 
   def edit

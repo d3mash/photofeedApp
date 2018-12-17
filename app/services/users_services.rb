@@ -5,9 +5,9 @@ module UsersServices
     def save_user(user)
       if user.save
         user.send_activation_email
-        true
+        [:info, 'Please check your email to activate your account.']
       else
-        false
+        [:danger, 'Please verify validity of your information']
       end
     end
 
