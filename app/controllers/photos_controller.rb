@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PhotosController < ApplicationController
-  include PhotosServices
   def index
     @photos = Photo.reorder('created_at DESC').paginate(page: params[:page])
   end
@@ -11,7 +10,7 @@ class PhotosController < ApplicationController
     if !params[:image]
       home
     else
-      upload(params)
+      PhotosServices.upload(params)
     end
     home
   end
@@ -24,7 +23,7 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    del(Photo.find(params[:id]))
+    PhotoServices.del(Photo.find(params[:id]))
     redirect_to('/')
   end
 
