@@ -15,6 +15,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
         email: '',
         password: '' } }
 
+    follow_redirect!
     assert_template 'sessions/new'
     assert_not flash.empty?
   end
