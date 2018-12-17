@@ -4,6 +4,7 @@
 	  <%= gravatar_for @user %>
 	  <%= @user.name %>
 	</h1>
+  <%= will_paginate %>
   <ul class="photos">
     <% @photos.each do |photo| %>
     <li>
@@ -30,4 +31,5 @@
     </li>
     <% end %>
   </ul>
+  <%= will_paginate %>
 </div>
