@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
-
-  include UsersServices
+  # before_action :destroy_photos, only: [:destroy]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -18,7 +17,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.valid?
-      save_user(@user)
+      UsersServices.save_user(@user)
+      flash[:info] = 'Please check your email to activate your account.'
+      redirect_to root_url
     else
       flash.now[:danger] = 'Please verify validity of your information'
       render('new')
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    destroy_photos(params[:id])
+    UsersServices.destroy_photos(params[:id])
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'
     redirect_to users_url
