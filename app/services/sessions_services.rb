@@ -3,11 +3,11 @@
 module SessionsServices
   class << self
     def try_login(params)
-      session = params[:session]
-      user = User.find_by(email: session[:email].downcase)
+      user = User.find_by(email: params[:session][:email].downcase)
+
       return unsuccessful_login unless user
 
-      return unsuccessful_login unless user.authenticate(session[:password])
+      return unsuccessful_login unless user.authenticate(params[:session][:password])
 
       return user.activated ? succesful_login(user) : not_activated
     end
