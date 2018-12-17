@@ -12,6 +12,7 @@ module SessionsServices
       return user.activated ? succesful_login(user) : not_activated
     end
 
+    private
     def unsuccessful_login
       [:danger, 'Invalid credentials, try again', '/login']
     end
@@ -19,11 +20,6 @@ module SessionsServices
     def succesful_login(user)
       [:success, "Welcome, #{user.name}!", user]
     end
-
-    # def unsuccessful_login
-    #   flash.now[:danger] = 'Invalid credentials, try again'
-    #   render 'new'
-    # end
 
     def not_activated
       message = 'Account not activated. '

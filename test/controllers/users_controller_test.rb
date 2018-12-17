@@ -10,11 +10,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should redirect to login from index' do
     get users_path
+
     assert_redirected_to login_url
   end
 
   test 'should redirect edit when not logged in' do
     get edit_user_path(@user)
+
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -26,11 +28,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test 'should not be valid' do
-    invalid_email = User.new(name: 'Demash', email: 'idon"t haveatsign')
-    assert_not invalid_email.valid?, 'invalid email accepted'
-  end
-
   test 'password should be present (nonblank)' do
     @user.password = @user.password_confirmation = ' ' * 6
     assert_not @user.valid?
@@ -38,10 +35,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should save to db' do
     assert_difference 'User.count', 1 do
-      post users_path, params: { user: { name:  'Test',
-                                         email: 'test@example.com',
-                                         password:              'password',
-                                         password_confirmation: 'password' } }
+      post users_path, params: {
+        user: {
+          name: 'Test',
+          email: 'test@example.com',
+          password: 'password',
+          password_confirmation: 'password' } }
     end
     # follow_redirect!
     # assert_template 'users/show'

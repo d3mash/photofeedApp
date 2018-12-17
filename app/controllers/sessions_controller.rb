@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(target) : forget(target)
     end
     redirect_back_or target.to_s
- end
+  end
 
   def destroy
     log_out if logged_in?

@@ -12,4 +12,9 @@ class UserTest < ActiveSupport::TestCase
 
     assert test_user.valid?, 'valid user entry invalidated'
   end
+
+  test 'should not be valid' do
+    invalid_email = User.new(name: 'Demash', email: 'idon"t haveatsign')
+    assert_not invalid_email.valid?, 'invalid email accepted'
+  end
 end
