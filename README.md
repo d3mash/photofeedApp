@@ -12,7 +12,7 @@ Runs on ruby 2.5.3.
 - [x] Account activation via email link
 - [ ] Refactor user digest attributes
 - [ ] Password reset via email
-- [ ] Display all user's posts on user page
+- [x] Display all user's posts on user page
 
 To run locally you need: 
 * `clone this repo`
