@@ -17,7 +17,9 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = Photo.find_by(id: params[:id])
+    not_found if @photo.blank?
+
     @user = User.find(@photo.user_id)
   end
 

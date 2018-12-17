@@ -56,6 +56,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h1', @user.name
   end
 
+  test 'should redirect to 404' do
+    assert_raise('Not Found') do
+      get '/users/200'
+    end
+  end
   test 'should redirect destroy when not logged in' do
     assert_no_difference 'User.count' do
       delete user_path(@user)
