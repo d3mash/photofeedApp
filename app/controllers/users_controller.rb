@@ -36,9 +36,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(users_params)
       flash[:success] = 'Profile updated'
-      redirect_to @user
+      redirect_to(@user)
     else
-      render 'edit'
+      render('edit')
     end
   end
 
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     UsersServices.destroy_photos(params[:id])
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'
-    redirect_to users_url
+    redirect_to(users_url)
   end
 
   def correct_user
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
     store_location
     flash[:danger] = 'Please log in.'
-    redirect_to login_url
+    redirect_to(login_url)
   end
 
   def admin_user
