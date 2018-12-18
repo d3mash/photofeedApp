@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by!(id: params[:id])
-    # not_found if @user.blank?
 
     @photos = Photo.where(user_id: @user.id).reorder('created_at DESC').paginate(page: params[:page])
   end
