@@ -3,7 +3,7 @@
 class SessionsController < ApplicationController
   def create
     # determine displayed flash and redirect target from try_login service
-    type, message, target = SessionsServices.try_login(params)
+    (type, message, target) = SessionsServices.try_login(params)
     flash[type] = message
     if type == :success
       log_in target
