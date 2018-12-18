@@ -3,9 +3,7 @@
 module UsersServices
   class << self
     def save_user(user)
-      if user.save
-        user.send_activation_email
-      end
+      user.send_activation_email if user.save
     end
 
     def destroy_photos(userid)

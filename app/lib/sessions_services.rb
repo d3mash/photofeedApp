@@ -14,15 +14,15 @@ module SessionsServices
     end
 
     def unsuccessful_login
-      [:danger, t('auth.invalid'), '/login']
+      [:danger, I18n.t('auth.invalid'), '/login']
     end
 
     def succesful_login(user)
-      [:success, t('auth.successful', name: user.name), user]
+      [:success, I18n.t('auth.successful', name: user.name), user]
     end
 
     def not_activated
-      [:warning, t('auth.succesful'), '/']
+      [:warning, I18n.t('auth.succesful'), '/']
     end
   end
 end
