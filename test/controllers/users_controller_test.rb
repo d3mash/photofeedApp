@@ -51,11 +51,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user.valid?
   end
 
-  test 'should display correct user' do
-    get '/users/1'
-    assert_select 'h1', @user.name
-  end
-
   test 'should redirect to 404' do
     assert_raise('Not Found') do
       get '/users/200'
@@ -65,6 +60,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'User.count' do
       delete user_path(@user)
     end
+    assert_redirected_to login_url
+  end
+
+  test 'should redirect following when not logged in' do
+    get following_user_path(@user)
+    assert_redirected_to login_url
+  end
+
+  test 'should redirect followers when not logged in' do
+    get followers_user_path(@user)
     assert_redirected_to login_url
   end
 end

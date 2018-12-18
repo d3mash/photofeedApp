@@ -3,9 +3,13 @@
 	<h1 class="user-page" style="text-align: center">
 	  <%= gravatar_for @user %>
 	  <%= @user.name %>
+    <div class="stats">
+      <%= render 'shared/stats' %>
+    </div>
 	</h1>
   <%= will_paginate @photos %>
   <ul class="photos">
+    <%= render 'follow_form' if logged_in? %>
     <% @photos.each do |photo| %>
     <li>
       <% user = User.find(photo.user_id)%>

@@ -10,6 +10,8 @@ detectors:
     allow_calls:
       - 'Rails.env'
     max_calls: 2
+  TooManyStatements:
+    max_statements: 6
 
   UncommunicativeModuleName:
     accept:
@@ -25,6 +27,11 @@ directories:
 
       enabled: false
   'app/services':
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+  'app/lib':
     UtilityFunction:
       enabled: false
     FeatureEnvy:

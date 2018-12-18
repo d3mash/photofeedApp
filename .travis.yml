@@ -12,7 +12,7 @@ before_script:
 services:
   - postgresql
 script:
-  - bundle exec rubocop
+  - bundle exec reek
   - bin/rails test
 after_script:
   - ./cc-test-reporter after-build -r $CC_TEST_REPORTER_ID --exit-code $TRAVIS_TEST_RESULT
