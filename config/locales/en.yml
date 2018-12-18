@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  registration:
+    invalid: 'Please verify validity of your information'
+    successful: 'Please check your email to activate account'
+  auth:
+    invalid: 'Invalid credentials, try again'
+    not_activated: 'Account not activated. Check your email for the activation link.'
+    successful: 'Welcome, %{name}'

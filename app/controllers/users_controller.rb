@@ -11,21 +11,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    not_found if @user.blank?
+    @user = User.find_by!(id: params[:id])
+    # not_found if @user.blank?
 
     @photos = Photo.where(user_id: @user.id).reorder('created_at DESC').paginate(page: params[:page])
   end
 
   def create
     @user = User.new(users_params)
-    if @user.valid?
-      type, message = UsersServices.save_user(@user)
-      redirect_to root_url
+    if UsersServices.save_user(@user)
+      flash[:info] = t('registration.successful')
+      redirect_to(root_url)
     else
+      flash[:danger] = t('registration.invalid')
       render('new')
     end
-    flash[type] = message
   end
 
   def edit

@@ -4,27 +4,25 @@ module SessionsServices
   class << self
     def try_login(params)
       user = User.find_by(email: params[:session][:email].downcase)
-
       return unsuccessful_login unless user
 
-      return unsuccessful_login unless user.authenticate(params[:session][:password])
-
-      return user.activated ? succesful_login(user) : not_activated
+      if user.authenticate(params[:session][:password])
+        user.activated ? succesful_login(user) : not_activated
+      else
+        unsuccessful_login
+      end
     end
 
-    private
     def unsuccessful_login
-      [:danger, 'Invalid credentials, try again', '/login']
+      [:danger, t('auth.invalid'), '/login']
     end
 
     def succesful_login(user)
-      [:success, "Welcome, #{user.name}!", user]
+      [:success, t('auth.successful', name: user.name), user]
     end
 
     def not_activated
-      message = 'Account not activated. '
-      message += 'Check your email for the activation link.'
-      [:warning, message, '/']
+      [:warning, t('auth.succesful'), '/']
     end
   end
 end
