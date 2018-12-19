@@ -22,7 +22,7 @@ module SessionsServices
     end
 
     def not_activated
-      [:warning, I18n.t('auth.succesful'), '/']
+      [:warning, I18n.t('auth.not_activated'), '/']
     end
   end
 end
