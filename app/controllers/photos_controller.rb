@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
     if !params[:image]
       home
     else
-      PhotosServices.upload(params)
+      PhotosServices.upload(params, current_user.id)
     end
     home
   end
