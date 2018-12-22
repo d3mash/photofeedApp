@@ -2,13 +2,13 @@
 
 module PhotosServices
   class << self
-    def upload(params)
+    def upload(params, author)
       # upload to cloudinary
       @value = Cloudinary::Uploader.upload(params[:image])
 
       # create photo instance
       @photo = Photo.new(link: @value['secure_url'], public_id: @value['public_id'],
-                           caption: params[:caption], user_id: current_user.id)
+                           caption: params[:caption], user_id: author)
 
       # and save it to database
       @photo.save
