@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=caa26723a5be994043d1a250f744379813f7c59a85ff03e78a4d3121a568a544
 language: ruby
 rvm:
- - 2.5.3
+ - 2.6.1
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
