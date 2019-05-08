@@ -27,7 +27,7 @@ class ActionDispatch::IntegrationTest
       session: {
       email: user.email,
       password: password,
-      remember_me: true } }
+      remember_me: remember_me } }
   end
 end
   # Add more helper methods to be used by all tests here...

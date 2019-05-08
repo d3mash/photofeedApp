@@ -13,10 +13,6 @@ module SessionsServices
       end
     end
 
-    def login_if_activated(user)
-      user.activated? successful_login(user) : not_activated 
-    end
-
     def unsuccessful_login
       [:danger, I18n.t('auth.invalid'), '/login']
     end

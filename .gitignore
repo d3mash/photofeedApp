@@ -1,6 +1,5 @@
 /.bundle
 /config/local_env.yml
-/config/clouidinary.yml
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
